@@ -1,0 +1,23 @@
+{
+  "name": "fs-io-benchmark",
+  "version": "1.0.0",
+  "description": "Cross-platform filesystem I/O performance benchmarks for Windows and WSL",
+  "main": "benchmark.ts",
+  "scripts": {
+    "test": "bun benchmark.ts"
+  },
+  "keywords": [
+    "benchmark",
+    "filesystem",
+    "io",
+    "performance",
+    "wsl",
+    "windows"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/bun": "^1.2.18",
+    "typescript": "^5.8.3"
+  }
+}
