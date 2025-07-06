@@ -58,7 +58,7 @@ All measurements use Windows Native performance as the 100% baseline for compari
 
 "@
         
-        $Operations = @("Sequential Read", "Sequential Write", "Random Read", "Random Write", "Directory Traversal")
+        $Operations = @("Sequential Read (10MB)", "Sequential Read (100MB)", "Sequential Write (10MB)", "Sequential Write (100MB)", "Random Read", "Random Write", "Directory Traversal")
         
         foreach ($Operation in $Operations) {
             # Always use Windows native as baseline - first try Windows results, then WSL results
@@ -217,7 +217,7 @@ Windows→WSL network share writes are catastrophically slow:
 **Hardware**: $($env:COMPUTERNAME)  
 **Software**: Windows 11 + WSL2 (Ubuntu 22.04)  
 **Test Parameters**:
-- Sequential I/O: 100MB file operations
+- Sequential I/O: 50MB file operations
 - Random I/O: 1,000 × 4KB file operations  
 - Directory Traversal: 50 directories × 20 files each
 - Multiple runs averaged for consistency
