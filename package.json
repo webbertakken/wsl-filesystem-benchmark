@@ -1,7 +1,7 @@
 {
-  "name": "fs-io-benchmark",
+  "name": "wsl-filesystem-benchmark",
   "version": "1.0.0",
-  "description": "Cross-platform filesystem I/O performance benchmarks for Windows and WSL",
+  "description": "Filesystem I/O performance benchmarks for interoperability between Windows and WSL",
   "main": "benchmark.ts",
   "scripts": {
     "test": "bun benchmark.ts"
@@ -14,7 +14,7 @@
     "wsl",
     "windows"
   ],
-  "author": "",
+  "author": "Webber",
   "license": "MIT",
   "devDependencies": {
     "@types/bun": "^1.2.18",
