@@ -194,8 +194,10 @@ class IOBenchmark {
     console.log('='.repeat(60));
 
     try {
+      await this.sequentialReadTest(location, 1);
       await this.sequentialReadTest(location, 10);
       await this.sequentialReadTest(location, 100);
+      await this.sequentialWriteTest(location, 1);
       await this.sequentialWriteTest(location, 10);
       await this.sequentialWriteTest(location, 100);
       await this.randomIOTest(location, 1000, 4);

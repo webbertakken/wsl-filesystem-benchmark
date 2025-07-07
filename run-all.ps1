@@ -58,7 +58,7 @@ All measurements use Windows Native performance as the 100% baseline for compari
 
 "@
         
-        $Operations = @("Sequential Read (10MB)", "Sequential Read (100MB)", "Sequential Write (10MB)", "Sequential Write (100MB)", "Random Read", "Random Write", "Directory Traversal")
+        $Operations = @("Sequential Read (1MB)", "Sequential Read (10MB)", "Sequential Read (100MB)", "Sequential Write (1MB)", "Sequential Write (10MB)", "Sequential Write (100MB)", "Random Read", "Random Write", "Directory Traversal")
         
         foreach ($Operation in $Operations) {
             # Always use Windows native as baseline - first try Windows results, then WSL results
@@ -97,17 +97,17 @@ All measurements use Windows Native performance as the 100% baseline for compari
                     if ($Operation -like "*Random*") {
                         $val = [math]::Round($WSLNative.iops, 0)
                         $pct = [math]::Round(($WSLNative.iops / $WinNative.iops) * 100, 1)
-                        $icon = if ($pct -ge 110) { "📈" } elseif ($pct -le 10) { "⚠️" } else { "📉" }
+                        $icon = if ($pct -ge 150) { "✨" } elseif ($pct -ge 110) { "📈" } elseif ($pct -le 5) { "⚠️" } else { "📉" }
                         $WSLNativePerf = "$val IOPS ($pct%) $icon"
                     } elseif ($Operation -eq "Directory Traversal") {
                         $val = [math]::Round($WSLNative.filesPerSec, 0)
                         $pct = [math]::Round(($WSLNative.filesPerSec / $WinNative.filesPerSec) * 100, 1)
-                        $icon = if ($pct -ge 110) { "📈" } elseif ($pct -le 10) { "⚠️" } else { "📉" }
+                        $icon = if ($pct -ge 150) { "✨" } elseif ($pct -ge 110) { "📈" } elseif ($pct -le 5) { "⚠️" } else { "📉" }
                         $WSLNativePerf = "$val files/s ($pct%) $icon"
                     } else {
                         $val = [math]::Round($WSLNative.throughputMBps, 1)
                         $pct = [math]::Round(($WSLNative.throughputMBps / $WinNative.throughputMBps) * 100, 1)
-                        $icon = if ($pct -ge 110) { "📈" } elseif ($pct -le 10) { "⚠️" } else { "📉" }
+                        $icon = if ($pct -ge 150) { "✨" } elseif ($pct -ge 110) { "📈" } elseif ($pct -le 5) { "⚠️" } else { "📉" }
                         $WSLNativePerf = "$val MB/s ($pct%) $icon"
                     }
                 } else { $WSLNativePerf = "N/A" }
@@ -117,17 +117,17 @@ All measurements use Windows Native performance as the 100% baseline for compari
                     if ($Operation -like "*Random*") {
                         $val = [math]::Round($WSLToWin.iops, 0)
                         $pct = [math]::Round(($WSLToWin.iops / $WinNative.iops) * 100, 1)
-                        $icon = if ($pct -ge 110) { "📈" } elseif ($pct -le 10) { "⚠️" } else { "📉" }
+                        $icon = if ($pct -ge 150) { "✨" } elseif ($pct -ge 110) { "📈" } elseif ($pct -le 5) { "⚠️" } else { "📉" }
                         $WSLToWinPerf = "$val IOPS ($pct%) $icon"
                     } elseif ($Operation -eq "Directory Traversal") {
                         $val = [math]::Round($WSLToWin.filesPerSec, 0)
                         $pct = [math]::Round(($WSLToWin.filesPerSec / $WinNative.filesPerSec) * 100, 1)
-                        $icon = if ($pct -ge 110) { "📈" } elseif ($pct -le 10) { "⚠️" } else { "📉" }
+                        $icon = if ($pct -ge 150) { "✨" } elseif ($pct -ge 110) { "📈" } elseif ($pct -le 5) { "⚠️" } else { "📉" }
                         $WSLToWinPerf = "$val files/s ($pct%) $icon"
                     } else {
                         $val = [math]::Round($WSLToWin.throughputMBps, 1)
                         $pct = [math]::Round(($WSLToWin.throughputMBps / $WinNative.throughputMBps) * 100, 1)
-                        $icon = if ($pct -ge 110) { "📈" } elseif ($pct -le 10) { "⚠️" } else { "📉" }
+                        $icon = if ($pct -ge 150) { "✨" } elseif ($pct -ge 110) { "📈" } elseif ($pct -le 5) { "⚠️" } else { "📉" }
                         $WSLToWinPerf = "$val MB/s ($pct%) $icon"
                     }
                 } else { $WSLToWinPerf = "N/A" }
@@ -137,17 +137,17 @@ All measurements use Windows Native performance as the 100% baseline for compari
                     if ($Operation -like "*Random*") {
                         $val = [math]::Round($WinToWSL.iops, 0)
                         $pct = [math]::Round(($WinToWSL.iops / $WinNative.iops) * 100, 1)
-                        $icon = if ($pct -ge 110) { "📈" } elseif ($pct -le 10) { "⚠️" } else { "📉" }
+                        $icon = if ($pct -ge 150) { "✨" } elseif ($pct -ge 110) { "📈" } elseif ($pct -le 5) { "⚠️" } else { "📉" }
                         $WinToWSLPerf = "$val IOPS ($pct%) $icon"
                     } elseif ($Operation -eq "Directory Traversal") {
                         $val = [math]::Round($WinToWSL.filesPerSec, 0)
                         $pct = [math]::Round(($WinToWSL.filesPerSec / $WinNative.filesPerSec) * 100, 1)
-                        $icon = if ($pct -ge 110) { "📈" } elseif ($pct -le 10) { "⚠️" } else { "📉" }
+                        $icon = if ($pct -ge 150) { "✨" } elseif ($pct -ge 110) { "📈" } elseif ($pct -le 5) { "⚠️" } else { "📉" }
                         $WinToWSLPerf = "$val files/s ($pct%) $icon"
                     } else {
                         $val = [math]::Round($WinToWSL.throughputMBps, 1)
                         $pct = [math]::Round(($WinToWSL.throughputMBps / $WinNative.throughputMBps) * 100, 1)
-                        $icon = if ($pct -ge 110) { "📈" } elseif ($pct -le 10) { "⚠️" } else { "📉" }
+                        $icon = if ($pct -ge 150) { "✨" } elseif ($pct -ge 110) { "📈" } elseif ($pct -le 5) { "⚠️" } else { "📉" }
                         $WinToWSLPerf = "$val MB/s ($pct%) $icon"
                     }
                 } else { $WinToWSLPerf = "N/A" }
@@ -157,6 +157,8 @@ All measurements use Windows Native performance as the 100% baseline for compari
         }
         
         $Report += @"
+
+**Legend**: 📊 Baseline | ✨ Exceptional (≥150%) | 📈 Good (110-149%) | 📉 Below baseline (>5%) | ⚠️ Critical (≤5%)
 
 ---
 
@@ -217,7 +219,7 @@ Windows→WSL network share writes are catastrophically slow:
 **Hardware**: $($env:COMPUTERNAME)  
 **Software**: Windows 11 + WSL2 (Ubuntu 22.04)  
 **Test Parameters**:
-- Sequential I/O: 50MB file operations
+- Sequential I/O: 1MB, 10MB, and 100MB file operations
 - Random I/O: 1,000 × 4KB file operations  
 - Directory Traversal: 50 directories × 20 files each
 - Multiple runs averaged for consistency
